@@ -10,7 +10,7 @@ export default function FlagsMithProvider({
   flagsmithState,
 }: {
   children: React.ReactNode;
-  flagsmithState?: IState<string, string>;
+  flagsmithState?: IState<string>;
 }) {
   return (
     <FlagsmithProvider flagsmith={flagsmith} serverState={flagsmithState}>
