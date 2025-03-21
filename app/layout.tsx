@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: title,
     description: description,
     type: "website",
-    url: "https://rak.vercel.app",
+    url: "https://rak-vine.vercel.app",
   },
   twitter: {
     title,
