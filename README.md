@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This project was submitted in hackathon and no longer maintained.
+
 # Rak - Decentralized Certificate Verification Platform
 
 <div align="center">
