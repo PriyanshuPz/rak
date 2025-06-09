@@ -1,6 +1,3 @@
-> [!IMPORTANT]
-> This project was submitted in hackathon and no longer maintained.
-
 # Rak - Decentralized Certificate Verification Platform
 
 <div align="center">
@@ -8,135 +5,127 @@
   <p><em>Secure your achievements on the decentralized web</em></p>
 </div>
 
+---
+
+> 🚀 **Rak is open source and actively maintained!** We welcome contributions, feature requests, and feedback. [Join us on GitHub](https://github.com/PriyanshuPz/rak) to help shape the future of decentralized credential verification.
+
+---
+
 ## Introduction
 
-Rak is a modern platform that leverages the InterPlanetary File System (IPFS) to provide secure, permanent, and tamper-proof storage for your certificates and achievements. In an era where digital credentials are increasingly important, Rak ensures your accomplishments are verifiable and accessible forever.
+**Rak** is a modern platform that leverages the **InterPlanetary File System (IPFS)** to provide secure, permanent, and tamper-proof storage for your certificates and achievements. In an era where digital credentials are increasingly important, Rak ensures your accomplishments are **verifiable**, **resilient**, and **accessible forever**.
 
-Unlike traditional certificate storage solutions that rely on centralized servers, Rak stores your certificates on a distributed network, making them resistant to censorship, server failures, and data loss. Each certificate receives a unique Content Identifier (CID) that serves as cryptographic proof of the document's authenticity.
+Unlike traditional certificate storage solutions that rely on centralized servers, Rak stores your certificates on a distributed network — making them resistant to censorship, server failures, and data loss. Each certificate receives a unique **Content Identifier (CID)** that serves as cryptographic proof of the document's authenticity.
 
 ## Table of Contents
 
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Architecture](#architecture)
-- [Contributing](#contributing)
-- [License](#license)
+* [Features](#features)
+* [Tech Stack](#tech-stack)
+* [Getting Started](#getting-started)
+
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Architecture](#architecture)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Features
 
-- **Decentralized Storage**: All certificates are stored on IPFS, ensuring they remain accessible indefinitely
-- **Easy Verification**: Share a simple link that anyone can use to verify the authenticity of your credentials
-- **User-Friendly Interface**: Modern, responsive design that works across all devices
-- **Dark/Light Mode**: Choose the visual theme that works best for you
-- **Secure Authentication**: Login with popular providers like Google and GitHub
-- **Privacy Controls**: You decide who can see your certificates and how they're shared
+* 🔗 **Decentralized Storage**: Certificates are stored on IPFS to ensure permanent accessibility
+* ✅ **Easy Verification**: Share a simple link to verify credentials without needing an account
+* 💡 **User-Friendly Interface**: Responsive, modern design that works seamlessly across devices
+* 🌓 **Dark/Light Mode**: Toggle between visual themes for accessibility and comfort
+* 🔐 **Secure Authentication**: Sign in via Google or GitHub using NextAuth
+* 🛡️ **Privacy Controls**: Control who can view and access your certificates
 
 ## Tech Stack
 
-- **Frontend**: Next.js, React, Tailwind CSS, Shadcn UI
-- **Backend**: Next.js API Routes
-- **Authentication**: NextAuth.js
-- **Database**: Prisma with MongoDB
-- **Storage**: IPFS via Filebase
-- **Deployment**: Vercel
+* **Frontend**: Next.js, React, Tailwind CSS, Shadcn UI
+* **Backend**: Next.js API Routes
+* **Authentication**: NextAuth.js
+* **Database**: Prisma + MongoDB
+* **Storage**: IPFS via Filebase
+* **Deployment**: Vercel
 
 ## Getting Started
 
 ### Prerequisites
 
-Before you begin, ensure you have the following prerequisites:
-
-- [Node.js](https://nodejs.org/) (version 18.x or higher)
-- [Bun](https://bun.sh/) (recommended) or npm/yarn
-- [MongoDB](https://mongodb.com/) (local instance or cloud-based)
+* [Node.js](https://nodejs.org/) (v18+)
+* [Bun](https://bun.sh/) (recommended) or npm/yarn
+* [MongoDB](https://mongodb.com/) (local or cloud)
 
 ### Installation
 
-1. Clone the repository:
+```bash
+git clone https://github.com/PriyanshuPz/rak.git
+cd rak
+bun install # or npm install
+```
 
-   ```bash
-   git clone https://github.com/your-username/rak.git
-   cd rak
-   ```
+Create a `.env` file with the following:
 
-2. Install dependencies:
+```env
+DATABASE_URL="mongodb://localhost:27017/rak"
 
-   ```bash
-   bun install
-   # or
-   npm install
-   ```
+AUTH_GOOGLE_SECRET="google-secret-key"
+AUTH_GOOGLE_ID="google-id"
 
-3. Create a `.env` file in the root directory with the following environment variables:
+AUTH_GITHUB_SECRET="github-secret-key"
+AUTH_GITHUB_ID="github-id"
 
-   ```env
-   DATABASE_URL="mongodb://localhost:27017/rak"
+AUTH_URL="http://localhost:3000/api/auth"
+AUTH_SECRET="secret-key"
 
-   AUTH_GOOGLE_SECRET="google-secret-key"
-   AUTH_GOOGLE_ID="google-id"
+NEXT_PUBLIC_URL="http://localhost:3000"
+NEXT_PUBLIC_IPFS_KEY="ipfs-key"
 
-   AUTH_GITHUB_SECRET="github-secret-key"
-   AUTH_GITHUB_ID="github-id"
+NEXT_PUBLIC_FLAGSMITH_ENV="flagsmith-environment-id"
+```
 
-   AUTH_URL="http://localhost:3000/api/auth"
-   AUTH_SECRET="secret-key"
+Generate the Prisma client:
 
-   NEXT_PUBLIC_URL="http://localhost:3000"
-   NEXT_PUBLIC_IPFS_KEY="ipfs-key"
+```bash
+bunx prisma generate
+```
 
-   NEXT_PUBLIC_FLAGSMITH_ENV="flagsmith-environment-id"
-   ```
+Start the development server:
 
-4. Generate Prisma client:
+```bash
+bun dev # or npm run dev
+```
 
-   ```bash
-   bunx prisma generate
-   ```
-
-5. Start the development server:
-
-   ```bash
-   bun dev
-   # or
-   npm run dev
-   ```
-
-6. Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
+Visit: [http://localhost:3000](http://localhost:3000)
 
 ## Usage
 
-1. **Sign up/Login**: Create an account using Google or GitHub authentication
-2. **Upload Certificate**: Click the "Create" button to upload a new certificate
-3. **View Certificates**: Browse your uploaded certificates from the dashboard
-4. **Share**: Click on a certificate to view its details and share it with others
-5. **Verify**: Anyone with the link can verify the authenticity of your certificate without needing an account
+1. **Log in** using GitHub or Google
+2. **Upload certificates** to IPFS via Rak
+3. **Share or verify** certificates using unique, public CIDs
 
 ## Architecture
 
-Rak follows a modern web application architecture:
-
-- **App Router**: Utilizes Next.js App Router for server components and efficient routing
-- **Server Components**: Leverages React Server Components for improved performance
-- **API Routes**: RESTful API endpoints for data operations
-- **Authentication Flow**: Secure OAuth-based authentication with session management
-- **IPFS Integration**: Uploads files to IPFS via Filebase for permanent, decentralized storage
+* **App Router** (Next.js 13+) with Server & Client Components
+* **NextAuth.js** for OAuth2-based secure login
+* **Filebase** integration for IPFS uploads
+* **MongoDB** for metadata storage and user profiles
 
 ## Contributing
 
-We welcome contributions from the community! To contribute:
+Rak is open source and **actively maintained**. Contributions, bug reports, and feature requests are not just welcome — they’re encouraged!
 
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Commit your changes (`git commit -m 'Add some amazing feature'`)
-5. Push to the branch (`git push origin feature/amazing-feature`)
-6. Open a Pull Request
+### How to Contribute:
 
-Please read our [Contributing Guidelines](CONTRIBUTING.md) for more details.
+1. **Fork** this repo
+2. Create your feature branch: `git checkout -b feature/awesome-feature`
+3. Commit your changes: `git commit -m 'Add awesome feature'`
+4. Push to your branch: `git push origin feature/awesome-feature`
+5. Open a **Pull Request**
+
+🛠️ We track active work and roadmap in [GitHub Issues](https://github.com/PriyanshuPz/rak/issues). Feel free to suggest features or report bugs there.
+
+Read our [Contributing Guidelines](CONTRIBUTING.md) for more.
 
 ## License
 
@@ -145,5 +134,5 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 <div align="center">
-  <p>Built with ❤️ for the decentralized web</p>
+  <strong>Built with ❤️ for the decentralized web — and open to all contributors!</strong>
 </div>
